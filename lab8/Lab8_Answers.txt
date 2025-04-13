@@ -1,0 +1,25 @@
+			     EE 109 - Spring 2025
+		     Lab 8 - Hardware Datapath Components
+
+Edit the document below to fill in your answers to the review problems at the
+end of the assignment web page.
+
+
+1. (2 points) We would like to add a feature where if the Select button is
+pressed on the LCD, it turns the LED off completely, and then turns it back on
+when Select is pressed again.  Explain how this could be done without having to
+make any changes to the wiring of the circuit .
+
+Since the Enable input is to set at the pin 1 of the IC139 which is controlled by the PWM input, we could change the value of the PWM to turn on and turn off the LED at the same time. If we set the PWM signal to zero, then the whole decoder would not have any input since the enable is zero. With this logic, we can detect the button press of SELECT. Once it is pressed, then we would set the OCR2A to turn off the PWM signal. 
+
+
+
+2. (1 point) When TIMER2 is counting, the count value is kept in the TCNT2
+register and is constantly being compared for equality (and only equality) to
+the values in the OCR2A register to determine when to terminate the PWM
+pulse. Suppose at some point your program adjusts the PWM width by changing the
+OCR2A register, and the new OCR2A value is lower than the value that is
+currently in the TCNT2 register. What will happen to the output signal during
+this pulse period?
+
+Since the TCNT2 counts up until it meets the OCR2A value, if the TCNT2 value exceeds the OCR2A value when we turn down the OCR2A value, the TCNT2 would continuously increase until it overflows. The output signal would remain high until it overflow or the timer2 reset and set to a number that is higher than the TCNT2. 
