@@ -1,0 +1,36 @@
+			     EE 109 - Spring 2025
+		    Lab 6 - Rotary Encoders and Interrupts
+
+Edit the document below to fill in your answers to the review problems at the
+end of the assignment web page.
+
+
+1. (2 points) TIMER1 is to be used to output a 50% duty cycle signal
+(squarewave) for tone generation as was done in this lab.  For the two tones
+specified below, determine a prescalar, the OCR1A value, and the number of
+interrupts to allow before stopping the timer.  Your answer for the prescalar
+and OCR1A values should be the ones that give the most accurate timing.
+
+a. 200 Hz tone for 5 seconds
+OCR1A = 16000000/(2*64*200)-1 = 624
+The pre scalar would be 64
+Number of interrupts would be 5s * 2 * 200Hz = 2000
+
+
+b. 32 Hz tone for 2 seconds
+
+OCR1A = 16000000/(2*128*32) -1 = 121
+Prescalar 128
+Number of interrupts would be 32Hz * 2 * 2s = 128
+
+
+2. (1 point) Briefly explain why updating the LCD display in your ISR could
+lead to undesirable behavior for this lab.
+Because ISR function has high priority which would change right after there is a pin change detected. If you update the pin in the function, it would have a very long delay which affects the whole process. 
+
+
+
+
+
+
+
